@@ -1,8 +1,7 @@
-@extends('layouts.header')
+@extends('layouts.default')
 
 @section('content')
-<body>
-<section id="intro" class="intro-section">
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -65,6 +64,5 @@
             </div>
         </div>
     </div>
-</section>
-</body>
+
 @endsection

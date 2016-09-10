@@ -1,17 +1,12 @@
-@extends('layouts.app')
-
+@extends('layouts.default')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="{{URL::asset('image/4.jpg')}}" height="800" width="450">
             </div>
         </div>
     </div>
-</div>
+    </body>
 @endsection
