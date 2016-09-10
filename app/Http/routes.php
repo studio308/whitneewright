@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/about', 'AboutController@index');
+Route::get('/contact', 'ContactController@index');
