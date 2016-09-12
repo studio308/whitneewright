@@ -8,5 +8,9 @@ use App\Http\Requests;
 
 class WorksController extends Controller
 {
-    //
+    public function show($category)
+    {
+
+        dd($category);
+    }
 }
