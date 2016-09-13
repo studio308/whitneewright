@@ -8,6 +8,11 @@ class Work extends Model
 {
     public function categories()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Categories::class, 'category_id');
+    }
+
+    public function medias()
+    {
+        return $this->hasMany(Media::class);
     }
 }

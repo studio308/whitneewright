@@ -11,6 +11,8 @@
 |
 */
 
+use App\Categories;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -19,4 +21,7 @@ Route::auth();
 
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
-Route::get('/{category}', 'WorksController@show');
+
+Route::get('{categories}', 'CategoriesController@show', function(Categories $categories){
+    return $categories;
+});

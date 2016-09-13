@@ -27,9 +27,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Work<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/watercolor') }}">Watercolor</a></li>
-                        <li><a href="#">Acrylic</a></li>
-                        <li><a href="#">Ink</a></li>
-                        <li><a href="#">Multimedia</a></li>
+                        <li><a href="{{ url('/acrylic') }}">Acrylic</a></li>
+                        <li><a href="{{ url('/ink') }}">Ink</a></li>
+                        <li><a href="{{ url('/multimedia') }}">Multimedia</a></li>
                     </ul>
                 </li>
                 <li>
