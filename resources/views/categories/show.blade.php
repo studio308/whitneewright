@@ -11,8 +11,10 @@
         @if($category->works && $category->works->count())
             @foreach($category->works as $work)
             <div class="col-lg-3 col-md-4 col-xs-6">
-                <img class="img-responsive" src="{{URL::asset( $work->medias->where('primary', 1)->pluck('path')->first())}}">
-                <a href="{{ route('works.show', $work->alias) }}"> {{ $work->title }} </a>
+                <a href="{{ route('works.show', $work->alias) }}">
+                    <img class="img-responsive" src="{{URL::asset( $work->medias->where('primary', 1)->pluck('path')->first())}}">
+                    {{ $work->title }}
+                </a>
             </div>
             @endforeach
         @else

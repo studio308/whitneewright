@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Work extends Model
 {
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
     }
