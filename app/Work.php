@@ -13,6 +13,6 @@ class Work extends Model
 
     public function medias()
     {
-        return $this->hasMany(Media::class);
+        return $this->hasMany(Media::class, 'work_id');
     }
 }

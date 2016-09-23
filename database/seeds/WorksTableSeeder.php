@@ -12,7 +12,7 @@ class WorksTableSeeder extends Seeder
     public function run()
     {
         factory(App\Work::class, 5)->create()->each(function($w) {
-            $w->categories()->save(factory(App\Category::class)->make());
+            $w->categories()->save(factory(App\Categories::class)->make());
         });
     }
 }

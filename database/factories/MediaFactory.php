@@ -11,8 +11,10 @@
 |
 */
 
-$factory->define(App\Categories::class, function (Faker\Generator $faker) {
+$factory->define(App\Media::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name
+        'title' => $faker->title,
+        'path' => $faker->image(),
+        'primary' => $faker->boolean
     ];
 });

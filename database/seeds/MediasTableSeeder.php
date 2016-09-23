@@ -11,6 +11,8 @@ class MediasTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Media::class, 5)->create()->each(function($w) {
+            $w->works()->save(factory(App\Work::class)->make());
+        });
     }
 }

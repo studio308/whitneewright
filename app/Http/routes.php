@@ -22,6 +22,13 @@ Route::auth();
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
-Route::get('{categories}', 'CategoriesController@show', function(Categories $categories){
-    return $categories;
-});
+$categories = Categories::all();
+
+foreach($categories as $category)
+{
+    Route::get($category->alias, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@showByAlias']);
+}
+
+Route::get('/works', 'WorksController@index');
+Route::get('/works/{id}', 'WorksController@show');
+Route::get('/works/{workAlias}', ['as' => 'works.show', 'uses' => 'WorksController@show']);

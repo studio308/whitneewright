@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
+    protected $table = 'medias';
+
     public function works()
     {
-        $this->belongsTo(Work::class);
+        return $this->belongsTo(Work::class, 'work_id');
     }
 }

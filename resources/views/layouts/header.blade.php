@@ -65,12 +65,12 @@
 </nav>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="{{ URL::asset('js/jquery.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
 <!-- Scrolling Nav JavaScript -->
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/scrolling-nav.js"></script>
+<script src="{{ URL::asset('js/jquery.easing.min.js') }}"></script>
+<script src="{{ URL::asset('js/scrolling-nav.js') }}"></script>
 
