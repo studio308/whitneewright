@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAliasToCategoriesTable extends Migration
+class AddAliasToCategories extends Migration
 {
     /**
      * Run the migrations.

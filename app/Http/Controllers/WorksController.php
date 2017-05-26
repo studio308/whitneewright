@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Whitneewright\Http\Controllers;
 
-use App\Category;
 use App\Work;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Routing\Controller;
 
 class WorksController extends Controller
 {

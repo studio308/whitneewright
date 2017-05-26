@@ -12,13 +12,13 @@
             @foreach($category->works as $work)
             <div class="col-lg-3 col-md-4 col-xs-6">
                 <a href="{{ route('works.show', $work->alias) }}">
-                    <img class="img-responsive" src="{{URL::asset( $work->medias->where('primary', 1)->pluck('path')->first())}}">
+                    <img class="img-responsive" src="{{URL::asset( $work->primaryMedia() )}}">
                     {{ $work->title }}
                 </a>
             </div>
             @endforeach
         @else
-            <p>There are no {{ $category->title }}. Please check back later</p>
+            <p>There are no {{ $category->name }} art. Please check back later</p>
         @endif
     </div>
 </div>

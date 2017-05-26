@@ -12,10 +12,12 @@
 */
 
 use App\Categories;
+use App\Work;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'HomeController@index'
+]);
 
 Route::auth();
 
@@ -26,9 +28,41 @@ $categories = Categories::all();
 
 foreach($categories as $category)
 {
-    Route::get($category->alias, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@showByAlias']);
+    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@show']);
 }
+
 
 Route::get('/works', 'WorksController@index');
 Route::get('/works/{id}', 'WorksController@show');
 Route::get('/works/{workAlias}', ['as' => 'works.show', 'uses' => 'WorksController@show']);
+
+Route::get('/events', [
+    'uses' =>  'EventsController@index'
+]);
+Route::get('/events/{eventAlias}', ['as' => 'events.show', 'uses' => 'EventsController@show']);
+
+Route::get('/admin', [
+    'as' => 'admin.index',
+    'uses' => 'Admin\AdminController@index'
+]);
+Route::get('/admin/categories', [
+    'as' => 'admin.categories',
+    'uses' => 'Admin\AdminController@categories'
+]);
+Route::get('/admin/works', [
+    'as' => 'admin.works',
+    'uses' => 'Admin\AdminController@works'
+]);
+Route::get('/admin/events', [
+    'as' => 'admin.events',
+    'uses' => 'Admin\AdminController@events'
+]);
+
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
+    $api->post('/admin/categories/store', [
+        'as' => 'categories.store',
+        'uses' => 'Api\CategoriesApiController@store'
+    ]);
+});

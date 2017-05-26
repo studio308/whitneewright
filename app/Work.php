@@ -15,4 +15,9 @@ class Work extends Model
     {
         return $this->hasMany(Media::class, 'work_id');
     }
+
+    public function primaryMedia()
+    {
+        return $this->medias->where('primary', 1)->pluck('path')->first();
+    }
 }

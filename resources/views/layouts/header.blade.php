@@ -26,10 +26,9 @@
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Work<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/watercolor') }}">Watercolor</a></li>
-                        <li><a href="{{ url('/acrylic') }}">Acrylic</a></li>
-                        <li><a href="{{ url('/ink') }}">Ink</a></li>
-                        <li><a href="{{ url('/multimedia') }}">Multimedia</a></li>
+                        @foreach($categories as $category)
+                            <li><a href="{{ route('categories.'.$category->alias) }}">{{ $category->alias }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li>
@@ -44,8 +43,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
