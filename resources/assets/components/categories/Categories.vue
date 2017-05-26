@@ -4,7 +4,11 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <ul class="list-group">
-                    <li v-for="category in categories" class="list-group-item">{{ category.alias }}</li>
+                    <li v-for="category in categories" class="list-group-item clearfix">{{ category.alias }}
+                        <button type="button" class="btn btn-default btn-sm pull-right" @click="deleteCategory(category.id)">
+                            <span class="glyphicon glyphicon-trash"></span> Trash
+                        </button>
+                    </li>
                 </ul>
             </div>
             <div class="panel-footer clearfix">
@@ -43,6 +47,18 @@
         },
         created: function() {
             this.$bus.$on('saved', function () { location.reload(); })
+        },
+        methods: {
+            deleteCategory: function(categoryId){
+
+                 this.$http.post(this.deleteEndpoint, {
+                    category_id: categoryId
+                }).then(function(response){
+                    this.$bus.$emit('saved');
+                 }, response =>{
+
+                 });
+            }
         },
         components:{
             'pulse-loader': PulseLoader,

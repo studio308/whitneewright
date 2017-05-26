@@ -65,4 +65,9 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'as' => 'categories.store',
         'uses' => 'Api\CategoriesApiController@store'
     ]);
+
+    $api->post('/admin/categories/delete', [
+        'as' => 'categories.delete',
+        'uses' => 'Api\CategoriesApiController@delete'
+    ]);
 });
