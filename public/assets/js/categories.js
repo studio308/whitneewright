@@ -11776,6 +11776,16 @@ exports.default = {
             location.reload();
         });
     },
+    methods: {
+        deleteCategory: function deleteCategory(categoryId) {
+
+            this.$http.post(this.deleteEndpoint, {
+                category_id: categoryId
+            }).then(function (response) {
+                this.$bus.$emit('saved');
+            }, function (response) {});
+        }
+    },
     components: {
         'pulse-loader': _vueSpinnerMin.PulseLoader,
         'add-category': _AddCategory2.default
@@ -11785,7 +11795,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h4',[_vm._v(" Categories ")]),_vm._v(" "),_c('div',{staticClass:"panel panel-default"},[_c('div',{staticClass:"panel-body"},[_c('ul',{staticClass:"list-group"},_vm._l((_vm.categories),function(category){return _c('li',{staticClass:"list-group-item"},[_vm._v(_vm._s(category.alias))])}))]),_vm._v(" "),_c('div',{staticClass:"panel-footer clearfix"},[_c('add-category',{attrs:{"save-endpoint":_vm.saveEndpoint}})],1)])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h4',[_vm._v(" Categories ")]),_vm._v(" "),_c('div',{staticClass:"panel panel-default"},[_c('div',{staticClass:"panel-body"},[_c('ul',{staticClass:"list-group"},_vm._l((_vm.categories),function(category){return _c('li',{staticClass:"list-group-item clearfix"},[_vm._v(_vm._s(category.alias)+"\n                    "),_c('button',{staticClass:"btn btn-default btn-sm pull-right",attrs:{"type":"button"},on:{"click":function($event){_vm.deleteCategory(category.id)}}},[_c('span',{staticClass:"glyphicon glyphicon-trash"}),_vm._v(" Trash\n                    ")])])}))]),_vm._v(" "),_c('div',{staticClass:"panel-footer clearfix"},[_c('add-category',{attrs:{"save-endpoint":_vm.saveEndpoint}})],1)])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

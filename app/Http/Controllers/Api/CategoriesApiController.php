@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Bus\Commands\DeleteCategoryCommand;
 use App\Categories;
 use App\Media;
 use App\Work;
@@ -11,7 +12,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Routing\Controller;
 use App\Http\Controllers\Api\AbstractApiController;
-use Binput;
 use Illuminate\Support\Facades\Input;
 
 class CategoriesApiController extends AbstractApiController
@@ -26,6 +26,23 @@ class CategoriesApiController extends AbstractApiController
         } catch(ValidationException $e) {
 
             return "that didn't work";
+        }
+    }
+
+    public function delete()
+    {
+        $categoryId = Input::get('category_id');
+        $category = Categories::find($categoryId);
+
+        try {
+            $this->dispatchNow(new DeleteCategoryCommand($category));
+
+            return "sick";
+
+        } catch(ValidationException $e) {
+
+            return "shit";
+
         }
     }
 }

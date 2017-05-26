@@ -11,7 +11,7 @@
                     <div id="categories">
                         <categories
                                 :categories="{{ $categories }}"
-                                delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('categories.store') }}"
+                                delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('categories.delete') }}"
                                 save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('categories.store') }}"
                         ></categories>
                     </div>
