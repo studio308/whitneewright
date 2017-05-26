@@ -1,4 +1,11 @@
 var elixir = require('laravel-elixir');
+require('laravel-elixir-vueify');
+
+// elixir.config.production = true;,
+elixir.config.assetsPath = 'resources/assets/';
+elixir.config.appPath = '';
+elixir.config.publicPath = 'public/assets/';
+elixir.config.js.folder = elixir.config.css.folder = elixir.config.css.sass.folder = '/';
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +19,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+    mix.copy(elixir.config.assetsPath + 'vendor/aws/aws-sdk-2.32.0.min.js',
+        elixir.config.publicPath + 'js/aws-sdk-2.32.0.min.js');
     mix.sass('app.scss');
+
+
+
+    //Admin components
+    mix.browserify('components/categories/categories.js');
 });

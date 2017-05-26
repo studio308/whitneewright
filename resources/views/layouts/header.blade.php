@@ -26,14 +26,13 @@
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Work<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Watercolor</a></li>
-                        <li><a href="#">Acrylic</a></li>
-                        <li><a href="#">Ink</a></li>
-                        <li><a href="#">Multimedia</a></li>
+                        @foreach($categories as $category)
+                            <li><a href="{{ route('categories.'.$category->alias) }}">{{ $category->alias }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
+                    <a class="page-scroll" href="{{ url('/contact') }}">Contact</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#">Events</a>
@@ -44,8 +43,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -65,12 +62,12 @@
 </nav>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="{{ URL::asset('js/jquery.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
 <!-- Scrolling Nav JavaScript -->
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/scrolling-nav.js"></script>
+<script src="{{ URL::asset('js/jquery.easing.min.js') }}"></script>
+<script src="{{ URL::asset('js/scrolling-nav.js') }}"></script>
 
