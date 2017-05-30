@@ -27,4 +27,5 @@ elixir(function(mix) {
 
     //Admin components
     mix.browserify('components/categories/categories.js');
+    mix.browserify('components/works/create/works.js');
 });

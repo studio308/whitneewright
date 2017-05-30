@@ -9,6 +9,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="{{ URL::asset('css/scrolling-nav.css') }}" rel="stylesheet">

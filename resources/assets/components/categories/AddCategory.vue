@@ -9,7 +9,7 @@
             </tbody>
         </table>
         <span><button type="button" class="btn btn-primary" v-if="showSaveButton == true" @click="save">Save</button></span>
-        <button class="glyphicon glyphicon-plus pull-right green" @click="addRow"></button>
+        <a type="button" class="glyphicon glyphicon-plus pull-right green" @click="addRow"></a>
     </div>
 </template>
 <style>
