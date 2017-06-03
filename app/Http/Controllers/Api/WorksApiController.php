@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Bus\Commands\AddWorksCommand;
 use App\Bus\Commands\DeleteCategoryCommand;
 use App\Categories;
 use App\Media;
@@ -15,35 +16,67 @@ use App\Http\Controllers\Api\AbstractApiController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
 class WorksApiController extends AbstractApiController
 {
     public function store(Request $request)
     {
-        $input = Input::get('image');
-        dd($request->all());
-        Image::make($image)->save(public_path($imageName));
 
         try {
+            $work = Input::all();
+            $this->dispatchNow(new AddWorksCommand(
+                array_get($work, 'title'),
+                array_get($work, 'selectedCategory'),
+                array_get($work, 'price'),
+                array_get($work, 'dimensions'),
+                array_get($work, 'description'),
+                array_get($work, 'images'),
+                array_get($work, 'primaryPhoto')
+            ));
+
+            return 'sweet';
 
         } catch(ValidationException $e) {
-
+            return 'bad';
         }
     }
 
     public function storeImage(Request $request)
     {
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = $image->getClientOriginalName();
-            Image::make($image)->save(public_path('/image/'.$imageName));
-            $path = 'image/'.$imageName;
-
-            return response($path);
+        //dd($request->file('file'));
+        if(!$request->hasFile('file')) {
+            return response('No image sent', 401);
         }
 
-        return response('There was an error');
+        if(!$request->file('file')->isValid()) {
+            return response('Image is not valid', 401);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|mimes:jpeg,jpg,png|max:6000'
+        ]);
+
+        if($validator->fails()) {
+            return response('There are errors in image', 401);
+        }
+
+        $mimeType = $request->file('file')->getClientMimeType();
+        $imageSize = $request->file('file')->getClientSize();
+        $imagePath = uniqid().'-'.$request->file('file')->getClientOriginalName().'.'.$request->file('file')->guessClientExtension();
+
+        $s3 = Storage::disk('s3');
+        if($s3->put($imagePath, file_get_contents($request->file('file')), 'public')) {
+            $image = [
+                'name' => $request->file('file')->getClientOriginalName(),
+                'path' => env('AWS_URL').$imagePath
+            ];
+
+            return response($image);
+        }
+
+        return response('error', 401);
     }
 
     public function delete()

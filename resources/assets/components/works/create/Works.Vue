@@ -36,24 +36,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="images" class="col-sm-3">Images</label>
-                        <div class="col-sm-10">
-                            <ul class="mod_files">
-                                <li v-for="(image, index) in images">
-                                    <strong>{{image.name}}</strong>
-                                    <div class="thumbnail">
-                                        <img :src="image.location" />
-                                        <div class="clearfix">
-                                            <input type="radio" name="primary" class="pull-left" value="image.id"><p class="pull-left">Primary</p>
-                                            <a type="button" class="glyphicon glyphicon-remove red pull-right green" @click="deleteImage(index)"></a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <input type="file" id="images" @change="onFileChange">
-                            <span><button type="button" class="btn btn-primary" @click="save">Save</button></span>
+                        <label class="col-sm-3 form-control-label">Images</label>
+                        <div class="col-sm-7">
+                            <dropzone id="myVueDropzone" :url="saveImageEndpoint" v-on:vdropzone-success="showSuccess">
+                                <!-- Optional parameters if any! -->
+                                <input type="hidden" name="token" value="xxx">
+                            </dropzone>
                         </div>
                     </div>
+                    <div class="form-group row" v-if="showPrimary == true">
+                        <label for="primary" class="col-sm-3 form-control-label">Primary Photo</label>
+                        <div class="col-sm-7">
+                            <select name="categories" id="primary" class="form-control" v-model="primaryPhoto">
+                                <option v-for="image in images" :value="image.name"> {{ image.name }} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <span><button type="button" class="btn btn-primary" @click="save">Save</button></span>
                 </form>
              </div>
         </div>
@@ -90,14 +89,26 @@ textarea { resize:vertical; }
         data(){
             return{
                 images: [],
-                imagesTest: [],
                 title: '',
                 selected: '',
+                primaryPhoto: '',
                 price: 0,
                 dimensions: '',
                 description: '',
-                image: {}
+                showPrimary: false
             }
+        },
+        watch: {
+            images: {
+                handler: function(val) {
+                    if(this.images.length >= 1) {
+                        this.showPrimary = true
+                    } else {
+                        this.showPrimary = false;
+                    }
+                },
+                deep: true
+            },
         },
         created: function() {
 
@@ -110,36 +121,14 @@ textarea { resize:vertical; }
                     'price': this.price,
                     'dimensions': this.dimensions,
                     'description': this.description,
-                    'images': this.images
+                    'images': this.images,
+                    'primaryPhoto': this.primaryPhoto
                 }
             }
         },
         methods: {
-            onFileChange(e) {
-                e.preventDefault();
-                var files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-
-                var file = e.target.files[0];
-                var imageView = window.URL.createObjectURL(file)
-                var data = new FormData();
-                data.append('image', file);
-                this.$http.post(this.saveImageEndpoint, data).then(function(response){
-                    console.log(response.data);
-                    var image = {
-                        'imagePath': response.data,
-                        'location': imageView,
-                    }
-                    this.images.push(image);
-                }, response =>{
-
-                });
-            },
             save: function() {
-                 var formData = new FormData()
-                 formData.append('image', this.image);
-                 this.$http.post(this.saveEndpoint, formData).then(function(response){
+                 this.$http.post(this.saveEndpoint, this.workData).then(function(response){
                     this.$bus.$emit('saved');
                  }, response =>{
 
@@ -147,6 +136,11 @@ textarea { resize:vertical; }
             },
             deleteImage: function(index) {
                 this.images.splice(index, 1);
+            },
+            showSuccess: function(file, response) {
+                console.log(response.name);
+
+                this.images.push(response);
             }
         },
         components:{

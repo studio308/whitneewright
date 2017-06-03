@@ -11700,16 +11700,28 @@ exports.default = {
     data: function data() {
         return {
             images: [],
-            imagesTest: [],
             title: '',
             selected: '',
+            primaryPhoto: '',
             price: 0,
             dimensions: '',
             description: '',
-            image: {}
+            showPrimary: false
         };
     },
 
+    watch: {
+        images: {
+            handler: function handler(val) {
+                if (this.images.length >= 1) {
+                    this.showPrimary = true;
+                } else {
+                    this.showPrimary = false;
+                }
+            },
+            deep: true
+        }
+    },
     created: function created() {},
     computed: {
         workData: function workData() {
@@ -11719,39 +11731,24 @@ exports.default = {
                 'price': this.price,
                 'dimensions': this.dimensions,
                 'description': this.description,
-                'images': this.images
+                'images': this.images,
+                'primaryPhoto': this.primaryPhoto
             };
         }
     },
     methods: {
-        onFileChange: function onFileChange(e) {
-            e.preventDefault();
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-
-            var file = e.target.files[0];
-            var imageView = window.URL.createObjectURL(file);
-            var data = new FormData();
-            data.append('image', file);
-            this.$http.post(this.saveImageEndpoint, data).then(function (response) {
-                console.log(response.data);
-                var image = {
-                    'imagePath': response.data,
-                    'location': imageView
-                };
-                this.images.push(image);
-            }, function (response) {});
-        },
-
         save: function save() {
-            var formData = new FormData();
-            formData.append('image', this.image);
-            this.$http.post(this.saveEndpoint, formData).then(function (response) {
+            this.$http.post(this.saveEndpoint, this.workData).then(function (response) {
                 this.$bus.$emit('saved');
             }, function (response) {});
         },
         deleteImage: function deleteImage(index) {
             this.images.splice(index, 1);
+        },
+        showSuccess: function showSuccess(file, response) {
+            console.log(response.name);
+
+            this.images.push(response);
         }
     },
     components: {
@@ -11764,7 +11761,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"panel panel-default"},[_c('div',{staticClass:"panel-body"},[_c('form',{attrs:{"enctype":"multipart/form-data"}},[_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"title"}},[_vm._v("Title")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.title),expression:"title"}],staticClass:"form-control",attrs:{"type":"text","id":"title","placeholder":"Title of the art piece"},domProps:{"value":(_vm.title)},on:{"input":function($event){if($event.target.composing){ return; }_vm.title=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"categories"}},[_vm._v("Category")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selected),expression:"selected"}],staticClass:"form-control",attrs:{"name":"categories","id":"categories"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selected=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},_vm._l((_vm.categories),function(category){return _c('option',{domProps:{"value":category.id}},[_vm._v(" "+_vm._s(category.alias)+" ")])}))])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"price"}},[_vm._v("Price")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.price),expression:"price"}],staticClass:"form-control",attrs:{"type":"number","id":"price","placeholder":"Price of the art piece"},domProps:{"value":(_vm.price)},on:{"input":function($event){if($event.target.composing){ return; }_vm.price=$event.target.value},"blur":function($event){_vm.$forceUpdate()}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"dimensions"}},[_vm._v("Dimensions")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.dimensions),expression:"dimensions"}],staticClass:"form-control",attrs:{"type":"text","min":"0","id":"dimensions","placeholder":""},domProps:{"value":(_vm.dimensions)},on:{"input":function($event){if($event.target.composing){ return; }_vm.dimensions=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"description"}},[_vm._v("Description")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.description),expression:"description"}],staticClass:"form-control",attrs:{"rows":"5","id":"description","placeholder":""},domProps:{"value":(_vm.description)},on:{"input":function($event){if($event.target.composing){ return; }_vm.description=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3",attrs:{"for":"images"}},[_vm._v("Images")]),_vm._v(" "),_c('div',{staticClass:"col-sm-10"},[_c('ul',{staticClass:"mod_files"},_vm._l((_vm.images),function(image,index){return _c('li',[_c('strong',[_vm._v(_vm._s(image.name))]),_vm._v(" "),_c('div',{staticClass:"thumbnail"},[_c('img',{attrs:{"src":image.location}}),_vm._v(" "),_c('div',{staticClass:"clearfix"},[_c('input',{staticClass:"pull-left",attrs:{"type":"radio","name":"primary","value":"image.id"}}),_c('p',{staticClass:"pull-left"},[_vm._v("Primary")]),_vm._v(" "),_c('a',{staticClass:"glyphicon glyphicon-remove red pull-right green",attrs:{"type":"button"},on:{"click":function($event){_vm.deleteImage(index)}}})])])])})),_vm._v(" "),_c('input',{attrs:{"type":"file","id":"images"},on:{"change":_vm.onFileChange}}),_vm._v(" "),_c('span',[_c('button',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":_vm.save}},[_vm._v("Save")])])])])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"panel panel-default"},[_c('div',{staticClass:"panel-body"},[_c('form',{attrs:{"enctype":"multipart/form-data"}},[_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"title"}},[_vm._v("Title")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.title),expression:"title"}],staticClass:"form-control",attrs:{"type":"text","id":"title","placeholder":"Title of the art piece"},domProps:{"value":(_vm.title)},on:{"input":function($event){if($event.target.composing){ return; }_vm.title=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"categories"}},[_vm._v("Category")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selected),expression:"selected"}],staticClass:"form-control",attrs:{"name":"categories","id":"categories"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selected=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},_vm._l((_vm.categories),function(category){return _c('option',{domProps:{"value":category.id}},[_vm._v(" "+_vm._s(category.alias)+" ")])}))])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"price"}},[_vm._v("Price")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.price),expression:"price"}],staticClass:"form-control",attrs:{"type":"number","id":"price","placeholder":"Price of the art piece"},domProps:{"value":(_vm.price)},on:{"input":function($event){if($event.target.composing){ return; }_vm.price=$event.target.value},"blur":function($event){_vm.$forceUpdate()}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"dimensions"}},[_vm._v("Dimensions")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.dimensions),expression:"dimensions"}],staticClass:"form-control",attrs:{"type":"text","min":"0","id":"dimensions","placeholder":""},domProps:{"value":(_vm.dimensions)},on:{"input":function($event){if($event.target.composing){ return; }_vm.dimensions=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"description"}},[_vm._v("Description")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.description),expression:"description"}],staticClass:"form-control",attrs:{"rows":"5","id":"description","placeholder":""},domProps:{"value":(_vm.description)},on:{"input":function($event){if($event.target.composing){ return; }_vm.description=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label"},[_vm._v("Images")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('dropzone',{attrs:{"id":"myVueDropzone","url":_vm.saveImageEndpoint},on:{"vdropzone-success":_vm.showSuccess}},[_c('input',{attrs:{"type":"hidden","name":"token","value":"xxx"}})])],1)]),_vm._v(" "),(_vm.showPrimary == true)?_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"primary"}},[_vm._v("Primary Photo")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.primaryPhoto),expression:"primaryPhoto"}],staticClass:"form-control",attrs:{"name":"categories","id":"primary"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.primaryPhoto=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},_vm._l((_vm.images),function(image){return _c('option',{domProps:{"value":image.name}},[_vm._v(" "+_vm._s(image.name)+" ")])}))])]):_vm._e(),_vm._v(" "),_c('span',[_c('button',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":_vm.save}},[_vm._v("Save")])])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

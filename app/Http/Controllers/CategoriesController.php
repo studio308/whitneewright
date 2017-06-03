@@ -15,24 +15,18 @@ class CategoriesController extends Controller
     public function show(Request $request)
     {
         $alias = $request->segments();
-        dd($alias);
-        $category = Categories::whereAlias($categoryAlias)->first()->works;
-
-        return view('works')->with('category', $category);
+        $category = Categories::whereAlias($alias)->first()->works;
+        dd($category);
+        return view('categories.show')->with('category', $category);
 
     }
 
     public function showByAlias(Request $request)
     {
-        $alias = $request->segments();
+        $name = $request->segments();
 
+        $category = Categories::where('name', $name)->first();
 
-        $category = Categories::whereAlias($alias)->first();
-
-        $data = [
-            'category' => $category,
-        ];
-
-        return view('categories.show')->with($data, 'data');
+        return view('categories.show')->with('category', $category);
     }
 }

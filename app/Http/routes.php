@@ -28,7 +28,7 @@ $categories = Categories::all();
 
 foreach($categories as $category)
 {
-    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@show']);
+    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@showByAlias']);
 }
 
 

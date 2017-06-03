@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Work extends Model
 {
+    protected $fillable = [
+        'title',
+        'category_id',
+        'description',
+        'price',
+        'measurements',
+        'alias'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');

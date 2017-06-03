@@ -2,7 +2,7 @@
 @section('content')
  <div class="container">
      <div class="pull-left">
-        <h1>{{ $category->name }}</h1>
+        <h1>{{ $category->alias }}</h1>
      </div>
 </div>
 
