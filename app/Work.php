@@ -29,4 +29,14 @@ class Work extends Model
     {
         return $this->medias->where('primary', 1)->pluck('path')->first();
     }
+
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    public function otherMedia()
+    {
+        return $this->medias->where('primary',0)->all();
+    }
 }
