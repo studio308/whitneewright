@@ -23,4 +23,10 @@ class AdminController extends Controller
         $categories = Categories::all();
         return view('admin.categories')->with('page', 'categories')->with('categories', $categories);
     }
+
+    public function addWorks()
+    {
+        $categories = Categories::all();
+        return view('admin.add-works')->with('page', 'addWorks')->with('categories', $categories);
+    }
 }

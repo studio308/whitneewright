@@ -1,6 +1,6 @@
 <?php
 
-namespace Whitneewright\Http\Controllers;
+namespace App\Http\Controllers;
 
 use App\Work;
 use Illuminate\Http\Request;

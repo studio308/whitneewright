@@ -28,7 +28,7 @@ $categories = Categories::all();
 
 foreach($categories as $category)
 {
-    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@show']);
+    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@showByAlias']);
 }
 
 
@@ -51,7 +51,7 @@ Route::get('/admin/categories', [
 ]);
 Route::get('/admin/works', [
     'as' => 'admin.works',
-    'uses' => 'Admin\AdminController@works'
+    'uses' => 'Admin\AdminController@addWorks'
 ]);
 Route::get('/admin/events', [
     'as' => 'admin.events',
@@ -65,9 +65,21 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'as' => 'categories.store',
         'uses' => 'Api\CategoriesApiController@store'
     ]);
-
     $api->post('/admin/categories/delete', [
         'as' => 'categories.delete',
         'uses' => 'Api\CategoriesApiController@delete'
+    ]);
+
+    $api->post('/admin/works/store', [
+        'as' => 'works.store',
+        'uses' => 'Api\WorksApiController@store'
+    ]);
+    $api->post('/admin/works/store-image', [
+        'as' => 'works.storeImage',
+        'uses' => 'Api\WorksApiController@storeImage'
+    ]);
+    $api->post('/admin/works/delete-image', [
+        'as' => 'works.deleteImage',
+        'uses' => 'Api\WorksApiController@deleteImage'
     ]);
 });
