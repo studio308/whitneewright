@@ -146,7 +146,6 @@ textarea { resize:vertical; }
         components:{
             'pulse-loader': PulseLoader,
             'dropzone': Dropzone
-
         }
     }
 </script>

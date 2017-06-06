@@ -82,4 +82,9 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'as' => 'works.deleteImage',
         'uses' => 'Api\WorksApiController@deleteImage'
     ]);
+
+    $api->post('/admin/events/store', [
+        'as' => 'events.store',
+        'uses' => 'Api\EventsApiController@store'
+    ]);
 });
