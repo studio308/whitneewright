@@ -29,4 +29,9 @@ class AdminController extends Controller
         $categories = Categories::all();
         return view('admin.add-works')->with('page', 'addWorks')->with('categories', $categories);
     }
+
+    public function events()
+    {
+        return view('admin.events')->with('page', 'events');
+    }
 }
