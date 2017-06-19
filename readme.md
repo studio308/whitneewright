@@ -1,2 +1,3 @@
-#Whitnee Wright
-An artist site that can be maintained, updated, and edited by the artist.
+# Project Title
+
+One Paragraph of project description goes here
