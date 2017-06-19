@@ -1,19 +1,21 @@
 @extends('layouts.default')
 @section('content')
- <div class="container">
-     <div class="pull-left">
-        <h1>{{ $category->alias }}</h1>
-     </div>
-</div>
 
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <h1 class="pull-left" style="margin-left: 10px;">{{ $category->alias }}</h1>
+        </div>
+    </div>
+    <div class="row">
         @if($category->works && $category->works->count())
             @foreach($category->works as $work)
-            <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="col-lg-2 col-md-3 col-sm-5 col-xs-5">
                 <a href="{{ route('works.show', $work->alias) }}">
-                    <img class="img-responsive" src="{{URL::asset( $work->primaryMedia() )}}">
-                    {{ $work->title }}
+                    <img class="photo-max" src="{{URL::asset( $work->primaryMedia() )}}">
+                    <div class="row">
+                        {{ $work->title }}
+                    </div>
                 </a>
             </div>
             @endforeach

@@ -2,3 +2,9 @@
     background-color: #ffffff;
     border-color: #ffffff;
 }
+
+.photo-max{
+    max-height: 200px;
+    max-width: 500px;
+    overflow: hidden;
+}

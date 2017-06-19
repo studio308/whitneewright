@@ -15,6 +15,10 @@ class Work extends Model
         'alias'
     ];
 
+    protected $appends = [
+        'allMedias'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
@@ -30,7 +34,7 @@ class Work extends Model
         return $this->medias->where('primary', 1)->pluck('path')->first();
     }
 
-    public function getMedias()
+    public function getAllMediasAttribute()
     {
         return $this->medias;
     }
