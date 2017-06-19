@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 
 class WorksController extends Controller
 {
+
     public function index()
     {
         $works = Work::all();
@@ -19,7 +20,7 @@ class WorksController extends Controller
     public function show($workAlias)
     {
         $work = Work::whereAlias($workAlias)->first();
-
+        //dd($work);
         return view('works.show')->with('work', $work);
     }
 }

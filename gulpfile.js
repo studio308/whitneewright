@@ -29,4 +29,7 @@ elixir(function(mix) {
     mix.browserify('components/categories/categories.js');
     mix.browserify('components/works/create/works.js');
     mix.browserify('components/events/addevent.js');
+
+    //page views
+    mix.browserify('components/works/workspage.js');
 });
