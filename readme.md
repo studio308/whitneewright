@@ -1,3 +1,3 @@
-# Project Title
+# Whitnee Wright
 
-One Paragraph of project description goes here
+An artist site that can be maintained, updated, and edited by the artist.
