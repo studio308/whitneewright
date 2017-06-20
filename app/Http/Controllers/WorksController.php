@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\Work;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -20,7 +21,7 @@ class WorksController extends Controller
     public function show($workAlias)
     {
         $work = Work::whereAlias($workAlias)->first();
-        //dd($work);
-        return view('works.show')->with('work', $work);
+        $categories = Categories::all();
+        return view('works.show')->with('work', $work)->with('categories', $categories);
     }
 }
