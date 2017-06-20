@@ -9,6 +9,9 @@
                 </div>
                 <div v-if="user" class="col pull-right">
                     <a href="#" @click="showModal">edit</a>
+                    <div class="row">
+                        <a href="#" @click="deleteModal">delete</a>
+                    </div>
                 </div>
             </div>
 
@@ -48,6 +51,16 @@
                             </div>
                         </div>
                         <span><button type="button" class="btn btn-primary" @click="update">Save</button></span>
+                    </div>
+                </div>
+            </modal>
+
+            <modal modal_id="delete" modal_class="delete" :display_header="false" :display_footer="false">
+                <div slot="modal_body">
+                    <div class="m-a-2 p-a-2 center text-center block-center center-block">
+                        <h4>Are you sure you want to delete {{ work.title }}?</h4>
+                        <span><button type="button" class="btn btn-primary" @click="deleteWork">Delete</button></span>
+                        <span><button type="button" class="btn btn-primary" @click="deleteWorkCancel">Cancel</button></span>
                     </div>
                 </div>
             </modal>
@@ -109,6 +122,10 @@
                 type: String,
                 default: null
             },
+            deleteEndpoint: {
+                type: String,
+                default: null
+            },
             work: {
                 type: Object,
                 required: true
@@ -162,6 +179,20 @@
                  this.$http.post(this.saveEndpoint, this.updateWork).then(function(response){
                     this.$bus.$emit('saved');
                     location.reload();
+                 }, response =>{
+
+                 });
+            },
+            deleteModal() {
+                $('#delete').modal('show');
+            },
+            deleteWorkCancel() {
+                $('#delete').modal('hide');
+            },
+            deleteWork() {
+                 this.$http.post(this.deleteEndpoint).then(function(response){
+                    this.$bus.$emit('deleted');
+                    //location.reload();
                  }, response =>{
 
                  });

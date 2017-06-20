@@ -7,6 +7,7 @@
                 <works-page
                         back-to-category="{{ route('categories.'.$work->category->alias) }}"
                         save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.update', $work->id) }}"
+                        delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.delete', $work->id) }}"
                         :work="{{ $work }}"
                         :categories="{{ $categories }}"
                         :user="{{ Auth::user() }}"

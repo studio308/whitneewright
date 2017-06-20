@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Bus\Commands\AddWorksCommand;
 use App\Bus\Commands\DeleteCategoryCommand;
+use App\Bus\Commands\DeleteWorkCommand;
 use App\Bus\Commands\UpdateWorkCommand;
 use App\Categories;
 use App\Media;
@@ -100,20 +101,16 @@ class WorksApiController extends AbstractApiController
         }
     }
 
-    public function delete()
+    public function delete($id)
     {
-        $categoryId = Input::get('category_id');
-        $category = Categories::find($categoryId);
-
         try {
-            $this->dispatchNow(new DeleteCategoryCommand($category));
+            $work = Work::findorfail($id);
+            $this->dispatchNow(new DeleteWorkCommand($work));
 
-            return "sick";
+            return 'sweet';
 
         } catch(ValidationException $e) {
-
-            return "shit";
-
+            return 'bad';
         }
     }
 }
