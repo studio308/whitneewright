@@ -11656,7 +11656,7 @@ exports.insert = function (css) {
 }
 
 },{}],8:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".spacer5 {\r\n  padding-top: 20px;\r\n}\r\n.padding {\r\n    padding-bottom: 5px;\r\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".white-box { margin-top: 50px; margin-left: auto; margin-right: auto;\n\nbackground: rgba(255,255,255,1);\npadding: 30px;\n-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);\n-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);\nbox-shadow: 0 1px 2px rgba(0,0,0,0.15);\n-webkit-border-radius: 5px;\n-moz-border-radius: 5px;\n-ms-border-radius: 5px;\n-o-border-radius: 5px;\nborder-radius: 5px;\n}\n\n.featured:before {\ncontent: '+';\nfont-weight: 400;\ndisplay: inline-block;\nmargin-right: 5px;\ncolor: #4CB1FF;\n}\n\n.vertical-text {width:50px; height:50px; margin: 30px 0 auto auto; background: #4CB1FF;}\n.vertical-text span {\nwidth: 50px;\ndisplay: inline-block;\ntext-align: center;\n-webkit-transform: rotate(-90deg);\n-moz-transform: rotate(-90deg);\n-ms-transform: rotate(-90deg);\n-o-transform: rotate(-90deg);\ntransform: rotate(-90deg);\n}")
 ;(function(){
 'use strict';
 
@@ -11665,18 +11665,96 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
     props: {
+        modal_id: {
+            type: String,
+            required: true
+        },
+        modal_class: {
+            type: String,
+            default: ''
+        },
+        size: {
+            default: null
+        },
+        use_header_close: {
+            default: false
+        },
+        display_footer: {
+            default: true
+        },
+        display_header: {
+            default: true
+        }
+    },
+    computed: {
+        display_header_close_btn: function display_header_close_btn() {
+            return this.use_header_close === 'true' || this.use_header_close === true;
+        }
+    }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal",class:_vm.modal_class,attrs:{"id":_vm.modal_id,"tabindex":"-1","role":"dialog","aria-labelledby":"","aria-hidden":"true"}},[_c('div',{staticClass:"row-col h-v"},[_c('div',{staticClass:"row-cell v-m"},[_c('div',{staticClass:"modal-dialog",class:_vm.size,attrs:{"role":"document"}},[_c('div',{staticClass:"white-box"},[(_vm.display_header)?_c('div',{staticClass:"box-header b-0"},[(_vm.display_header_close_btn)?_c('button',{staticClass:"close",attrs:{"type":"button","data-dismiss":"modal","aria-label":"Close"}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("×")])]):_vm._e(),_vm._v(" "),(!this.$slots['modal_header'])?_c('h6',{staticClass:"m-b-0"}):_vm._e(),_vm._v(" "),_vm._t("modal_header")],2):_vm._e(),_vm._v(" "),_c('div',{staticClass:"box-divider"}),_vm._v(" "),_c('div',{staticClass:"modal-body box-body"},[_vm._t("modal_body")],2),_vm._v(" "),(_vm.display_footer)?_c('div',{staticClass:"modal-footer box-footer"},[(!this.$slots['modal_footer'])?_c('button',{staticClass:"btn white",attrs:{"type":"button","data-dismiss":"modal"}},[_vm._v("Close")]):_vm._e(),_vm._v(" "),_vm._t("modal_footer")],2):_vm._e()])])])])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-add8e3f4", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-add8e3f4", __vue__options__)
+  }
+})()}
+},{"vue":6,"vue-hot-reload-api":4,"vueify/lib/insert-css":7}],9:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".spacer5 {\r\n  padding-top: 20px;\r\n}\r\n.padding {\r\n    padding-bottom: 5px;\r\n}\r\n.modal-mask {\r\n  position: fixed;\r\n  z-index: 9998;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(0, 0, 0, .5);\r\n  display: table;\r\n  transition: opacity .3s ease;\r\n}")
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Modal = require('../Modal.vue');
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    props: {
         backToCategory: {
             type: String,
             required: true
         },
+        saveEndpoint: {
+            type: String,
+            default: null
+        },
         work: {
             type: Object,
             required: true
+        },
+        categories: {
+            type: Array,
+            required: true
+        },
+        user: {
+            type: Object,
+            default: null
         }
     },
     data: function data() {
         return {
-            largePhoto: ''
+            largePhoto: '',
+            title: this.work.title,
+            category: this.work.category.id,
+            price: this.work.price,
+            dimensions: this.work.measurements,
+            description: this.work.description
         };
     },
 
@@ -11687,18 +11765,40 @@ exports.default = {
             }
         }
     },
+    computed: {
+        updateWork: function updateWork() {
+            return {
+                'title': this.title,
+                'selectedCategory': this.category,
+                'price': this.price,
+                'dimensions': this.dimensions,
+                'description': this.description
+            };
+        }
+    },
     methods: {
         changeLargePhoto: function changeLargePhoto(index) {
             this.largePhoto = this.work['medias'][index].path;
+        },
+        showModal: function showModal() {
+            $('#test').modal('show');
+        },
+        update: function update() {
+            this.$http.post(this.saveEndpoint, this.updateWork).then(function (response) {
+                this.$bus.$emit('saved');
+                location.reload();
+            }, function (response) {});
         }
     },
-    components: {}
+    components: {
+        'modal': _Modal2.default
+    }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"container"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col pull-left"},[_vm._v("\n                    Back to\n                    "),_c('a',{attrs:{"href":_vm.backToCategory}},[_vm._v(" "+_vm._s(_vm.work.category.alias))])])]),_vm._v(" "),_c('div',{staticClass:"row align-items-start"},[_c('div',{staticClass:"col-sm-1 spacer5"},_vm._l((_vm.work.medias),function(media,index){return _c('span',[_c('img',{staticClass:"img-responsive padding",attrs:{"width":"100","height":"100","src":media.path},on:{"click":function($event){_vm.changeLargePhoto(index)}}})])})),_vm._v(" "),_c('div',{staticClass:"col-sm-5"},[_c('h1',[_vm._v(_vm._s())]),_vm._v(" "),_c('span',[_c('img',{staticClass:"img-responsive",attrs:{"width":"400","height":"500","src":_vm.largePhoto}})]),_vm._v(" "),_c('p',[_vm._v(_vm._s())])]),_vm._v(" "),_c('div',{staticClass:"col-sm-5 col-md-2 spacer5"},[_vm._v("\n                    "+_vm._s(_vm.work.title)+"\n                    "),_c('div',{staticClass:"row"},[_vm._v("\n                        "+_vm._s(_vm.work.price)+"\n                    ")]),_vm._v(" "),_c('div',{staticClass:"row"},[_vm._v("\n                        "+_vm._s(_vm.work.description)+"\n                    ")])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"container"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col pull-left",staticStyle:{"margin-left":"15px"}},[_vm._v("\n                    Back to\n                    "),_c('a',{attrs:{"href":_vm.backToCategory}},[_vm._v(" "+_vm._s(_vm.work.category.alias))])]),_vm._v(" "),(_vm.user)?_c('div',{staticClass:"col pull-right"},[_c('a',{attrs:{"href":"#"},on:{"click":_vm.showModal}},[_vm._v("edit")])]):_vm._e()]),_vm._v(" "),_c('modal',{attrs:{"modal_id":"test","modal_class":"test","display_header":false,"display_footer":false}},[_c('div',{slot:"modal_body"},[_c('div',{staticClass:"m-a-2 p-a-2 center text-center block-center center-block"},[_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"title"}},[_vm._v("Title")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.title),expression:"title"}],staticClass:"form-control",attrs:{"type":"text","id":"title"},domProps:{"value":(_vm.title)},on:{"input":function($event){if($event.target.composing){ return; }_vm.title=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"categories"}},[_vm._v("Category")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.category),expression:"category"}],staticClass:"form-control",attrs:{"name":"categories","id":"categories"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.category=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},_vm._l((_vm.categories),function(category){return _c('option',{domProps:{"value":category.id}},[_vm._v(" "+_vm._s(category.alias)+" ")])}))])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"price"}},[_vm._v("Price")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.price),expression:"price"}],staticClass:"form-control",attrs:{"type":"number","id":"price"},domProps:{"value":(_vm.price)},on:{"input":function($event){if($event.target.composing){ return; }_vm.price=$event.target.value},"blur":function($event){_vm.$forceUpdate()}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"dimensions"}},[_vm._v("Dimensions")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.dimensions),expression:"dimensions"}],staticClass:"form-control",attrs:{"type":"text","min":"0","id":"dimensions"},domProps:{"value":(_vm.dimensions)},on:{"input":function($event){if($event.target.composing){ return; }_vm.dimensions=$event.target.value}}})])]),_vm._v(" "),_c('div',{staticClass:"form-group row"},[_c('label',{staticClass:"col-sm-3 form-control-label",attrs:{"for":"description"}},[_vm._v("Description")]),_vm._v(" "),_c('div',{staticClass:"col-sm-7"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.description),expression:"description"}],staticClass:"form-control",attrs:{"rows":"5","id":"description"},domProps:{"value":(_vm.description)},on:{"input":function($event){if($event.target.composing){ return; }_vm.description=$event.target.value}}})])]),_vm._v(" "),_c('span',[_c('button',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":_vm.update}},[_vm._v("Save")])])])])]),_vm._v(" "),_c('div',{staticClass:"row align-items-start"},[_c('div',{staticClass:"col-md-1 spacer5"},_vm._l((_vm.work.medias),function(media,index){return _c('span',[_c('img',{staticClass:"img-responsive padding",attrs:{"width":"100","height":"100","src":media.path},on:{"click":function($event){_vm.changeLargePhoto(index)}}})])})),_vm._v(" "),_c('div',{staticClass:"col-sm-5"},[_c('h1',[_vm._v(_vm._s())]),_vm._v(" "),_c('span',[_c('img',{staticClass:"img-responsive",attrs:{"width":"400","height":"500","src":_vm.largePhoto}})]),_vm._v(" "),_c('p',[_vm._v(_vm._s())])]),_vm._v(" "),_c('div',{staticClass:"col-sm-5 col-md-2 spacer5"},[_vm._v("\n                    "+_vm._s(_vm.work.title)+"\n                    "),_c('div',{staticClass:"row"},[_vm._v("\n                        "+_vm._s(_vm.work.price)+"\n                    ")]),_vm._v(" "),_c('div',{staticClass:"row"},[_vm._v("\n                        "+_vm._s(_vm.work.measurements)+"\n                    ")]),_vm._v(" "),_c('div',{staticClass:"row"},[_vm._v("\n                        "+_vm._s(_vm.work.description)+"\n                    ")])])])],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -11711,7 +11811,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.rerender("data-v-73aa6270", __vue__options__)
   }
 })()}
-},{"vue":6,"vue-hot-reload-api":4,"vueify/lib/insert-css":7}],9:[function(require,module,exports){
+},{"../Modal.vue":8,"vue":6,"vue-hot-reload-api":4,"vueify/lib/insert-css":7}],10:[function(require,module,exports){
 'use strict';
 
 var _WorksPage = require('./WorksPage.vue');
@@ -11733,6 +11833,6 @@ new Vue({
     }
 });
 
-},{"./WorksPage.vue":8,"vue":6,"vue-event-bus":3,"vue-resource":5}]},{},[9]);
+},{"./WorksPage.vue":9,"vue":6,"vue-event-bus":3,"vue-resource":5}]},{},[10]);
 
 //# sourceMappingURL=workspage.js.map

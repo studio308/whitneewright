@@ -3,10 +3,20 @@
     <div class="container">
         <div class="row">
             <div id="work">
+                @if(Auth::user())
                 <works-page
                         back-to-category="{{ route('categories.'.$work->category->alias) }}"
+                        save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.update', $work->id) }}"
                         :work="{{ $work }}"
+                        :categories="{{ $categories }}"
+                        :user="{{ Auth::user() }}"
                 ></works-page>
+                    @else
+                    <works-page
+                            back-to-category="{{ route('categories.'.$work->category->alias) }}"
+                            :work="{{ $work }}"
+                    ></works-page>
+                @endif
             </div>
             {{--<h1>{{ $work->title }}</h1>--}}
             {{--<img class="img-responsive" src="{{URL::asset( $work->primaryMedia())}}">--}}

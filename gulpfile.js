@@ -23,7 +23,7 @@ elixir(function(mix) {
         elixir.config.publicPath + 'js/aws-sdk-2.32.0.min.js');
     mix.sass('app.scss');
 
-
+    mix.browserify('js/app.js');
 
     //Admin components
     mix.browserify('components/categories/categories.js');

@@ -13,10 +13,10 @@
             <div class="col-lg-2 col-md-3 col-sm-5 col-xs-5">
                 <a href="{{ route('works.show', $work->alias) }}">
                     <img class="photo-max" src="{{URL::asset( $work->primaryMedia() )}}">
+                </a>
                     <div class="row">
                         {{ $work->title }}
                     </div>
-                </a>
             </div>
             @endforeach
         @else

@@ -74,6 +74,10 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'as' => 'works.store',
         'uses' => 'Api\WorksApiController@store'
     ]);
+    $api->post('/admin/works/update/{id}', [
+        'as' => 'works.update',
+        'uses' => 'Api\WorksApiController@update'
+    ]);
     $api->post('/admin/works/store-image', [
         'as' => 'works.storeImage',
         'uses' => 'Api\WorksApiController@storeImage'
