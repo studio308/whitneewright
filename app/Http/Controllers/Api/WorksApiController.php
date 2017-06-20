@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Bus\Commands\AddWorksCommand;
 use App\Bus\Commands\DeleteCategoryCommand;
+use App\Bus\Commands\UpdateWorkCommand;
 use App\Categories;
 use App\Media;
 use App\Work;
@@ -23,7 +24,6 @@ class WorksApiController extends AbstractApiController
 {
     public function store(Request $request)
     {
-
         try {
             $work = Input::all();
             $this->dispatchNow(new AddWorksCommand(
@@ -77,6 +77,27 @@ class WorksApiController extends AbstractApiController
         }
 
         return response('error', 401);
+    }
+
+    public function update($id)
+    {
+        try {
+            $work = Work::findorfail($id);
+            $updateWork = Input::all();
+            $this->dispatchNow(new UpdateWorkCommand(
+                $work,
+                array_get($updateWork, 'title'),
+                array_get($updateWork, 'selectedCategory'),
+                array_get($updateWork, 'price'),
+                array_get($updateWork, 'dimensions'),
+                array_get($updateWork, 'description')
+            ));
+
+            return 'sweet';
+
+        } catch(ValidationException $e) {
+            return 'bad';
+        }
     }
 
     public function delete()
