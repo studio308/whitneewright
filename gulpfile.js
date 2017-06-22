@@ -32,4 +32,5 @@ elixir(function(mix) {
 
     //page views
     mix.browserify('components/works/workspage.js');
+    mix.browserify('components/events/eventspage.js');
 });

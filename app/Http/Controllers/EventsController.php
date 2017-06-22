@@ -13,7 +13,7 @@ class EventsController extends Controller
     {
         $events = Event::all();
 
-        return view('events.events')->with($events, 'events');
+        return view('events.index')->with('events', $events);
 
     }
 
