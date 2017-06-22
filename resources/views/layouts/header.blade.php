@@ -35,7 +35,7 @@
                     <a class="page-scroll" href="{{ url('/contact') }}">Contact</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#">Events</a>
+                    <a class="page-scroll" href="{{ route('events.index') }}">Events</a>
                 </li>
             </ul>
 

@@ -37,6 +37,7 @@ Route::get('/works/{id}', 'WorksController@show');
 Route::get('/works/{workAlias}', ['as' => 'works.show', 'uses' => 'WorksController@show']);
 
 Route::get('/events', [
+    'as' => 'events.index',
     'uses' =>  'EventsController@index'
 ]);
 Route::get('/events/{eventAlias}', ['as' => 'events.show', 'uses' => 'EventsController@show']);
