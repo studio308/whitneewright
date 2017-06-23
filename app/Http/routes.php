@@ -62,6 +62,7 @@ Route::get('/admin/events', [
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
+    //categories
     $api->post('/admin/categories/store', [
         'as' => 'categories.store',
         'uses' => 'Api\CategoriesApiController@store'
@@ -71,6 +72,7 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'uses' => 'Api\CategoriesApiController@delete'
     ]);
 
+    //works
     $api->post('/admin/works/store', [
         'as' => 'works.store',
         'uses' => 'Api\WorksApiController@store'
@@ -92,8 +94,13 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'uses' => 'Api\WorksApiController@deleteImage'
     ]);
 
+    //events
     $api->post('/admin/events/store', [
         'as' => 'events.store',
         'uses' => 'Api\EventsApiController@store'
+    ]);
+    $api->post('/admin/events/update', [
+        'as' => 'events.update',
+        'uses' => 'Api\EventsApiController@update'
     ]);
 });

@@ -11700,7 +11700,7 @@ exports.default = {
             image: {},
             startDate: new Date(),
             endDate: new Date(),
-            format: 'd MMMM yyyy',
+            format: 'MMMM d yyyy',
             startTime: '',
             endTime: '',
             maxNumberOfFiles: 1

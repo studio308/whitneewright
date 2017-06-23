@@ -5,7 +5,7 @@
 
                 <div class="col pull-left" style="margin-left: 15px;">
                     Back to
-                    <a :href="backToCategory"> {{ work.category.alias }}</a>
+                    <a class="oblique" :href="backToCategory"> {{ work.category.alias }}</a>
                 </div>
                 <div v-if="user" class="col pull-right">
                     <a href="#" @click="showModal">edit</a>
@@ -108,6 +108,15 @@
   background-color: rgba(0, 0, 0, .5);
   display: table;
   transition: opacity .3s ease;
+}
+a {
+    color: #bdbdbd;
+}
+a.oblique {
+    font-style: oblique;
+}
+a:hover {
+    color: #000000;
 }
 </style>
 <script>
