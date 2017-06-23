@@ -62,8 +62,7 @@ class UpdateWorkCommand
 
     public function handle()
     {
-        $asdf = '';
-        return DB::transaction(function() use ($asdf) {
+        return DB::transaction(function() {
 
             $work = $this->work;
             $work->title = $this->title;
@@ -71,6 +70,7 @@ class UpdateWorkCommand
             $work->price = $this->price;
             $work->measurements = $this->dimensions;
             $work->description = $this->description;
+            $work->alias = str_slug($this->title);
 
             $work->save();
 

@@ -11,7 +11,8 @@
         <div class="row">
             <div id="events">
                 <events-page
-                :events="{{ $events }}">
+                :events="{{ $events }}"
+                save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.update') }}">
                 </events-page>
             </div>
         </div>
