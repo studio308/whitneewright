@@ -63,6 +63,7 @@
             save: function(){
                  this.$http.post(this.saveEndpoint, this.rows).then(function(response){
                     this.$bus.$emit('saved');
+                    location.reload();
                  }, response =>{
 
                  });
