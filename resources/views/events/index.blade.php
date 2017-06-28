@@ -10,10 +10,18 @@
         </div>
         <div class="row">
             <div id="events">
-                <events-page
-                :events="{{ $events }}"
-                save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.update') }}">
-                </events-page>
+                @if(Auth::user())
+                    <events-page
+                            :events="{{ $events }}"
+                            save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.update') }}"
+                            delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.delete') }}"
+                            :user="{{ Auth::user() }}">
+                    </events-page>
+                @else
+                    <events-page
+                            :events="{{ $events }}">
+                    </events-page>
+                @endif
             </div>
         </div>
     </div>

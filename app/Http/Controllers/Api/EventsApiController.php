@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Bus\Commands\AddEventCommand;
+use App\Bus\Commands\DeleteEventCommand;
 use App\Bus\Commands\UpdateEventCommand;
 use App\Event;
 use Illuminate\Contracts\Validation\ValidationException;
@@ -69,7 +70,12 @@ class EventsApiController extends AbstractApiController
     {
 
         try {
+            $eventId = Input::get('id');
+            $event = Event::findorfail($eventId);
 
+            $this->dispatchNow(new DeleteEventCommand(
+                $event
+            ));
 
         } catch(ValidationException $e) {
 

@@ -103,4 +103,8 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'as' => 'events.update',
         'uses' => 'Api\EventsApiController@update'
     ]);
+    $api->post('/admin/events/delete', [
+        'as' => 'events.delete',
+        'uses' => 'Api\EventsApiController@delete'
+    ]);
 });

@@ -5,8 +5,11 @@
                 <div class="col-lg-4 col-md-4 col-md-offset-4">
                     <img :src="event.path" class="event-photo">
                 </div>
-                <div class="col-lg-2">
+                <div v-if="user" class="col-lg-2">
                     <a href="#" @click="editModal(index)">edit</a>
+                    <div class="row">
+                        <a href="#" @click="deleteModal(index)">delete</a>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -92,6 +95,16 @@
             </div>
         </modal>
 
+        <modal modal_id="delete" modal_class="delete" :display_header="false" :display_footer="false">
+            <div slot="modal_body">
+                <div class="m-a-2 p-a-2 center text-center block-center center-block">
+                    <h4 id="modal-title">Are you sure you want to delete this event?</h4>
+                    <span><button type="button" class="btn btn-primary" @click="deleteEvent">Delete</button></span>
+                    <span><button type="button" class="btn btn-primary" @click="deleteEventCancel">Cancel</button></span>
+                </div>
+            </div>
+        </modal>
+
     </div>
 </template>
 <style>
@@ -108,6 +121,14 @@ input[readonly].form-control { background-color: #fff; }
             },
             saveEndpoint: {
                 type: String,
+                default: null
+            },
+            deleteEndpoint: {
+                type: String,
+                default: null
+            },
+            user: {
+                type: Object,
                 default: null
             },
         },
@@ -154,13 +175,29 @@ input[readonly].form-control { background-color: #fff; }
                 //$('#edit #title').val(event.title);
             },
             update() {
-                console.log('test');
                  this.$http.post(this.saveEndpoint, this.updateEvent).then(function(response){
                     this.$bus.$emit('saved');
                     location.reload();
                  }, response =>{
 
                  });
+            },
+            deleteEvent() {
+                 this.$http.post(this.deleteEndpoint, { id: this.id }).then(function(response){
+                    this.$bus.$emit('delete');
+                    location.reload();
+                 }, response =>{
+
+                 });
+            },
+            deleteModal: function(index) {
+                var event = this.events[index];
+                this.id = event.id;
+                $('#delete').modal('show');
+                $('#delete #modal-title').text("Are you sure you want to delete " + event.title);
+            },
+            deleteEventCancel() {
+                $('#delete').modal('hide');
             },
         },
         components:{
