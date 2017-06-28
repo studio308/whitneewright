@@ -201,7 +201,7 @@ a:hover {
             deleteWork() {
                  this.$http.post(this.deleteEndpoint).then(function(response){
                     this.$bus.$emit('deleted');
-                    //location.reload();
+                    location.reload();
                  }, response =>{
 
                  });

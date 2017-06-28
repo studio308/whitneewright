@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             @include('admin.partials._adminpanel')
-            <div class="col-lg-5">
+            <div class="col-lg-7">
                 <div id="works">
                     <works
                             save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.store') }}"
