@@ -65,13 +65,33 @@
                 </div>
             </modal>
 
+            <image-modal modal_id="image" modal_class="image" :display_header="true" :display_footer="false">
+                <div slot="modal_body">
+                    <div class="m-a-2 p-a-2 center text-center block-center center-block">
+                        <div class="imagewrap" v-on:mouseenter="showArrows" v-on:mouseleave="hideArrows">
+                            <button id="previousArrow" class="glyphicon glyphicon-backward previousArrow" @click="previousImage(images.indexOf(modalImage))"></button>
+                            <i class="arrow right"></i>
+                            <img class="img-responsive center-block" :src="modalImage.path">
+                            <button id="nextArrow" class="glyphicon glyphicon-forward nextArrow" @click="nextImage(images.indexOf(modalImage))"></button>
+                        </div>
+                    </div>
+                    <div slot="modal_footer">
+                        <div class="center text-center block-center center-block">
+                            <span class="modaltext">
+                                {{ (1 + images.indexOf(modalImage)) }} - {{ images.length }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </image-modal>
+
             <div class="row align-items-start">
                 <div class="col-md-1 spacer5">
                     <span v-for="(media, index) in work.medias"><img width="100" height="100" class="img-responsive padding" :src="media.path" @click="changeLargePhoto(index)"></span>
                 </div>
                 <div class="col-sm-5">
                     <h1>{{  }}</h1>
-                    <span><img width="400" height="500" class="img-responsive" :src="largePhoto"></span>
+                    <span><img width="400" height="500" class="img-responsive" :src="largePhoto.path" @click="showImageModal"></span>
                     <p>{{  }}</p>
                 </div>
                 <div class="col-sm-5 col-md-2 spacer5">
@@ -118,9 +138,26 @@ a.oblique {
 a:hover {
     color: #000000;
 }
+.previousArrow {position:absolute;top:50%;}
+.nextArrow {position:absolute;right:0;top:50%;}
+.imagewrap {display:inline-block;position:relative;}
+.modaltext{ color:white; }
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
 </style>
 <script>
     import Modal from '../Modal.vue'
+    import ImageModal from '../ImageModal.vue'
+    import vueImages from 'vue-images'
     export default{
         props: {
             backToCategory: {
@@ -141,7 +178,7 @@ a:hover {
             },
             categories: {
                 type: Array,
-                required: true
+                default: null
             },
             user: {
                 type: Object,
@@ -151,18 +188,19 @@ a:hover {
         data(){
             return{
                 largePhoto: '',
+                modalImage: '',
                 title: this.work.title,
                 category: this.work.category.id,
                 price: this.work.price,
                 dimensions: this.work.measurements,
-                description: this.work.description
+                description: this.work.description,
+                images: this.work.medias
             }
         },
         created: function() {
             for(var i = 0; i < this.work['medias'].length; i++) {
                 if(this.work['medias'][i].primary == 1) {
-                    this.largePhoto = this.work['medias'][i].path;
-
+                    this.largePhoto = this.work['medias'][i];
                 }
             }
         },
@@ -179,7 +217,7 @@ a:hover {
         },
         methods: {
             changeLargePhoto: function(index) {
-                this.largePhoto = this.work['medias'][index].path;
+                this.largePhoto = this.work['medias'][index];
             },
             showModal() {
                 $('#test').modal('show');
@@ -191,6 +229,37 @@ a:hover {
                  }, response =>{
 
                  });
+            },
+            showImageModal() {
+                this.modalImage = this.largePhoto;
+                $('#image').modal('show');
+                this.hideArrows();
+            },
+            nextImage: function(index){
+                if(index >= 0 && index <= this.images.length - 1) {
+                    if(index + 1 > this.images.length - 1) {
+                        this.modalImage = this.images[0];
+                    } else {
+                        this.modalImage = this.images[index + 1]
+                    }
+                }
+            },
+            previousImage: function(index){
+                if(index >= 0 && index <= this.images.length - 1) {
+                    if(index - 1 < 0) {
+                        this.modalImage = this.images[this.images.length - 1];
+                    } else {
+                        this.modalImage = this.images[index - 1]
+                    }
+                }
+            },
+            showArrows() {
+                $('#previousArrow').fadeIn();
+                $('#nextArrow').fadeIn();
+            },
+            hideArrows() {
+                $('#previousArrow').fadeOut();
+                $('#nextArrow').fadeOut();
             },
             deleteModal() {
                 $('#delete').modal('show');
@@ -208,7 +277,9 @@ a:hover {
             }
         },
         components:{
-            'modal' : Modal
+            'modal' : Modal,
+            'vue-images': vueImages,
+            'image-modal': ImageModal
         }
     }
 </script>

@@ -11732,6 +11732,7 @@ exports.default = {
         save: function save() {
             this.$http.post(this.saveEndpoint, this.eventData).then(function (response) {
                 this.$bus.$emit('saved');
+                location.reload();
             }, function (response) {});
         },
         showSuccess: function showSuccess(file, response) {
