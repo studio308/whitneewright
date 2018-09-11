@@ -59,7 +59,9 @@
                     <div class="form-group row">
                         <label class="col-sm-3 form-control-label">Image</label>
                         <div class="col-sm-7">
-                            <dropzone id="myVueDropzone" :url="saveImageEndpoint" v-on:vdropzone-success="showSuccess" :maxNumberOfFiles="maxNumberOfFiles">
+                            <dropzone id="myVueDropzone" :url="saveImageEndpoint" v-bind:dropzone-options="{headers: {
+                                Authorization: 'Bearer ' + this.apiToken
+                                }}" v-bind:use-custom-dropzone-options="true" v-on:vdropzone-success="showSuccess" :maxNumberOfFiles="maxNumberOfFiles">
                                 <!-- Optional parameters if any! -->
                                 <input type="hidden" name="token" value="xxx">
                             </dropzone>
@@ -95,6 +97,10 @@ textarea { resize:vertical; }
                 type: String,
                 required: true
             },
+            apiToken: {
+                type: String,
+                required: true
+            }
         },
         data(){
             return{
@@ -133,7 +139,9 @@ textarea { resize:vertical; }
                 this.endDate = val;
             },
             save: function() {
-                 this.$http.post(this.saveEndpoint, this.eventData).then(function(response){
+                 this.$http.post(this.saveEndpoint, this.eventData, {headers: {
+                         Authorization: 'Bearer ' + this.apiToken
+                     }}).then(function(response){
                     this.$bus.$emit('saved');
                     location.reload();
                  }, response =>{

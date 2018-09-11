@@ -6,6 +6,7 @@
             <div class="col-lg-7">
                 <div id="works">
                     <works
+                            api-token="{{ Auth::user()->api_token }}"
                             save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.store') }}"
                             save-image-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.storeImage') }}"
                             delete-image-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.deleteImage') }}"

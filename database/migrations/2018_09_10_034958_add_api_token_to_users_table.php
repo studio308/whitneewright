@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAliasToCategories extends Migration
+class AddApiTokenToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddAliasToCategories extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('alias');
+        Schema::table('users', function (Blueprint $table) {
+            $table->char('api_token', 60)->nullable()->after('remember_token');
         });
     }
 
@@ -24,8 +24,8 @@ class AddAliasToCategories extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('alias');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('api_token');
         });
     }
 }

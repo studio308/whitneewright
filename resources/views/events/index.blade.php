@@ -12,6 +12,7 @@
             <div id="events">
                 @if(Auth::user())
                     <events-page
+                            api-token="{{ Auth::user()->api_token }}"
                             :events="{{ $events }}"
                             save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.update') }}"
                             delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.delete') }}"

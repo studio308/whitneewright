@@ -5,6 +5,7 @@
             <div id="work">
                 @if(Auth::user())
                 <works-page
+                        api-token="{{ Auth::user()->api_token }}"
                         back-to-category="{{ route('categories.'.$work->category->alias) }}"
                         save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.update', $work->id) }}"
                         delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.delete', $work->id) }}"

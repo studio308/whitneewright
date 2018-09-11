@@ -33,7 +33,7 @@ foreach($categories as $category)
 
 
 Route::get('/works', 'WorksController@index');
-Route::get('/works/{id}', 'WorksController@show');
+Route::get('/works/{id}', ['as' => 'works.show-id', 'uses' => 'WorksController@showById']);
 Route::get('/works/{workAlias}', ['as' => 'works.show', 'uses' => 'WorksController@show']);
 
 Route::get('/events', [
@@ -61,7 +61,7 @@ Route::get('/admin/events', [
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
+$api->version('v1', ['namespace' => 'App\Http\Controllers', 'middleware' => 'auth:api'], function ($api) {
     //categories
     $api->post('/admin/categories/store', [
         'as' => 'categories.store',
@@ -81,7 +81,7 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'as' => 'works.update',
         'uses' => 'Api\WorksApiController@update'
     ]);
-    $api->post('/admin/works/delete/{id}', [
+    $api->delete('/admin/works/delete/{id}', [
         'as' => 'works.delete',
         'uses' => 'Api\WorksApiController@delete'
     ]);

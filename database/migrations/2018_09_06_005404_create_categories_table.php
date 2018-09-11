@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RenameCategoriesUpdatedAt extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class RenameCategoriesUpdatedAt extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function($table) {
-            $table->renameColumn('upated_at', 'updated_at');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('alias');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +27,6 @@ class RenameCategoriesUpdatedAt extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function($t) {
-            $t->renameColumn('updated_at', 'upated_at');
-        });
+        Schema::drop('categories');
     }
 }

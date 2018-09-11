@@ -23,6 +23,10 @@
             saveEndpoint: {
                 type: String,
                 required: true
+            },
+            apiToken: {
+                type: String,
+                required: true
             }
         },
         data(){
@@ -61,7 +65,9 @@
                 this.rows.splice(index, 1);
             },
             save: function(){
-                 this.$http.post(this.saveEndpoint, this.rows).then(function(response){
+                 this.$http.post(this.saveEndpoint, this.rows, {headers: {
+                         Authorization: 'Bearer ' + this.apiToken
+                     }}).then(function(response){
                     this.$bus.$emit('saved');
                     location.reload();
                  }, response =>{

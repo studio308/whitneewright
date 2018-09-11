@@ -11,7 +11,7 @@
         @if($category->works && $category->works->count())
             @foreach($category->works as $work)
             <div class="col-lg-2 col-md-3 col-sm-5 col-xs-5">
-                <a href="{{ route('works.show', $work->alias) }}">
+                <a href="{{ $work->alias ? route('works.show', $work->alias) : route('works.show-id', $work->id) }}">
                     <img class="photo-max" src="{{URL::asset( $work->primaryMedia() )}}">
                 </a>
                     <div class="row">

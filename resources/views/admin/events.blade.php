@@ -7,6 +7,7 @@
                 <div class="col-lg-7">
                     <div id="event">
                         <add-event
+                                api-token="{{ Auth::user()->api_token }}"
                                 save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('events.store') }}"
                                 save-image-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('works.storeImage') }}"
                         ></add-event>

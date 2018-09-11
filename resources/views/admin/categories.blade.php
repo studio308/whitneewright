@@ -4,13 +4,13 @@
         <div class="row">
             @include('admin.partials._adminpanel')
             <div class="col-lg-1">
-
             </div>
             <div class="container">
                 <div class="col-lg-5">
                     <div id="categories">
                         <categories
                                 :categories="{{ $categories }}"
+                                api-token="{{ Auth::user()->api_token }}"
                                 delete-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('categories.delete') }}"
                                 save-endpoint="{{ app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('categories.store') }}"
                         ></categories>

@@ -24,4 +24,11 @@ class WorksController extends Controller
         $categories = Categories::all();
         return view('works.show')->with('work', $work)->with('categories', $categories);
     }
+
+    public function showById($id)
+    {
+        $work = Work::findOrFail($id);
+        $categories = Categories::all();
+        return view('works.show')->with('work', $work)->with('categories', $categories);
+    }
 }

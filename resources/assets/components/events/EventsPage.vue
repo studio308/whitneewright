@@ -131,6 +131,10 @@ input[readonly].form-control { background-color: #fff; }
                 type: Object,
                 default: null
             },
+            apiToken: {
+                type: String,
+                required: true
+            }
         },
         data(){
             return{
@@ -175,7 +179,9 @@ input[readonly].form-control { background-color: #fff; }
                 //$('#edit #title').val(event.title);
             },
             update() {
-                 this.$http.post(this.saveEndpoint, this.updateEvent).then(function(response){
+                 this.$http.post(this.saveEndpoint, this.updateEvent, {headers: {
+                         Authorization: 'Bearer ' + this.apiToken
+                     }}).then(function(response){
                     this.$bus.$emit('saved');
                     location.reload();
                  }, response =>{
@@ -183,7 +189,9 @@ input[readonly].form-control { background-color: #fff; }
                  });
             },
             deleteEvent() {
-                 this.$http.post(this.deleteEndpoint, { id: this.id }).then(function(response){
+                 this.$http.post(this.deleteEndpoint, { id: this.id }, {headers: {
+                         Authorization: 'Bearer ' + this.apiToken
+                     }}).then(function(response){
                     this.$bus.$emit('delete');
                     location.reload();
                  }, response =>{

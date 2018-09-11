@@ -11749,6 +11749,10 @@ exports.default = {
         user: {
             type: Object,
             default: null
+        },
+        apiToken: {
+            type: String,
+            required: true
         }
     },
     data: function data() {
@@ -11793,13 +11797,17 @@ exports.default = {
             this.endTime = event.end_time;
         },
         update: function update() {
-            this.$http.post(this.saveEndpoint, this.updateEvent).then(function (response) {
+            this.$http.post(this.saveEndpoint, this.updateEvent, { headers: {
+                    Authorization: 'Bearer ' + this.apiToken
+                } }).then(function (response) {
                 this.$bus.$emit('saved');
                 location.reload();
             }, function (response) {});
         },
         deleteEvent: function deleteEvent() {
-            this.$http.post(this.deleteEndpoint, { id: this.id }).then(function (response) {
+            this.$http.post(this.deleteEndpoint, { id: this.id }, { headers: {
+                    Authorization: 'Bearer ' + this.apiToken
+                } }).then(function (response) {
                 this.$bus.$emit('delete');
                 location.reload();
             }, function (response) {});

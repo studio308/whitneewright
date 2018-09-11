@@ -14,6 +14,7 @@
             <div class="panel-footer clearfix">
                 <add-category
                         :save-endpoint="saveEndpoint"
+                        :api-token="apiToken"
                 ></add-category>
             </div>
         </div>
@@ -38,7 +39,12 @@
             deleteEndpoint: {
                 type: String,
                 required: true
+            },
+            apiToken: {
+                type: String,
+                required: true
             }
+
         },
         data(){
             return{
@@ -52,8 +58,10 @@
             deleteCategory: function(categoryId){
 
                  this.$http.post(this.deleteEndpoint, {
-                    category_id: categoryId
-                }).then(function(response){
+                    category_id: categoryId,
+                }, {headers: {
+                         Authorization: 'Bearer ' + this.apiToken
+                     }}).then(function(response){
                     this.$bus.$emit('saved');
                  }, response =>{
 
