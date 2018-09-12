@@ -24,12 +24,12 @@ Route::auth();
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
-//$categories = Categories::all();
-//
-//foreach($categories as $category)
-//{
-//    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@showByAlias']);
-//}
+$categories = Categories::all();
+
+foreach($categories as $category)
+{
+    Route::get('/'.$category->name, ['as' => 'categories.'.$category->alias, 'uses' => 'CategoriesController@showByAlias']);
+}
 
 
 Route::get('/works', 'WorksController@index');
