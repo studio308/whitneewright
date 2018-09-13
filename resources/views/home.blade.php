@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <img src="{{URL::asset('image/4.jpg')}}" height="800" width="450">
+                <img src="https://s3-us-west-1.amazonaws.com/whitneewright-dev/5b9ab8499d9ef-site1.jpg.jpeg">
             </div>
         </div>
     </div>

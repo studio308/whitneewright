@@ -10,8 +10,10 @@
 <!-- Bootstrap Core CSS -->
 <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/css/app.css') }}" rel="stylesheet">
 
 <!-- Custom CSS -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
 <link href="{{ URL::asset('css/scrolling-nav.css') }}" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

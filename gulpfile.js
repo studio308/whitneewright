@@ -21,7 +21,7 @@ elixir.config.js.folder = elixir.config.css.folder = elixir.config.css.sass.fold
 elixir(function(mix) {
     mix.copy(elixir.config.assetsPath + 'vendor/aws/aws-sdk-2.32.0.min.js',
         elixir.config.publicPath + 'js/aws-sdk-2.32.0.min.js');
-    mix.sass('app.scss');
+    mix.sass('sass/app.scss');
 
     mix.browserify('js/app.js');
 

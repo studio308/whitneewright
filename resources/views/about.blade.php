@@ -1,9 +1,16 @@
 @extends('layouts.default')
 @section('content')
     <div class="container">
-        <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-left">About Whitnee</h1>
-            <p>lskafjldaslfjsldf</p>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>About the Artist</h1>
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                Coming soon.
+            </div>
         </div>
     </div>
 @endsection
