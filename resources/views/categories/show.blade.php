@@ -5,7 +5,7 @@
             /* Prevent vertical gaps */
             line-height: 1;
 
-            -webkit-column-count: 5;
+            -webkit-column-count: 4;
             -webkit-column-gap:   0;
             -moz-column-count:    5;
             -moz-column-gap:      2px;
