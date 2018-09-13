@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42463162-8ba9-41fd-bb82-c04565e0fc55" name="Default" comment="fix bucket issue" />
+    <list default="true" id="42463162-8ba9-41fd-bb82-c04565e0fc55" name="Default" comment="idk">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="whitneewright.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -39,7 +41,7 @@
           <entry key="htaccess" value="1" />
           <entry key="js" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="47" />
+          <entry key="php" value="48" />
           <entry key="vue" value="7" />
           <entry key="yaml" value="4" />
         </counts>
@@ -49,7 +51,7 @@
           <entry key="Blade" value="13" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="34" />
+          <entry key="PHP" value="35" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Vue.js" value="9" />
           <entry key="YAML" value="4" />
@@ -59,8 +61,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Vue" value="94" />
-          <entry key="php" value="534" />
-          <entry key="txt" value="20" />
+          <entry key="php" value="535" />
+          <entry key="txt" value="23" />
           <entry key="vue" value="631" />
           <entry key="yaml" value="50" />
         </counts>
@@ -68,8 +70,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Blade" value="117" />
-          <entry key="PHP" value="417" />
-          <entry key="PLAIN_TEXT" value="20" />
+          <entry key="PHP" value="418" />
+          <entry key="PLAIN_TEXT" value="23" />
           <entry key="Vue.js" value="725" />
           <entry key="YAML" value="50" />
         </counts>
@@ -81,6 +83,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/works/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,28 +102,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/categories/show.blade.php">
+        <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="99" selection-start-line="13" selection-start-column="99" selection-end-line="13" selection-end-column="99" />
+            <state relative-caret-position="389">
+              <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/WorksApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="73" column="64" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
+            <state relative-caret-position="280">
+              <caret line="63" column="9" lean-forward="true" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -120,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WorksController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="357">
               <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
@@ -239,9 +241,9 @@
         <option value="$PROJECT_DIR$/deploy.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/config/filesystems.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/WorksApiController.php" />
         <option value="$PROJECT_DIR$/resources/assets/components/works/create/Works.Vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WorksController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/WorksApiController.php" />
       </list>
     </option>
   </component>
@@ -534,7 +536,7 @@
       <workItem from="1536627806392" duration="644000" />
       <workItem from="1536726840145" duration="4036000" />
       <workItem from="1536762187148" duration="128000" />
-      <workItem from="1536854871807" duration="4584000" />
+      <workItem from="1536854871807" duration="5090000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1536729395377</created>
@@ -557,14 +559,29 @@
       <option name="project" value="LOCAL" />
       <updated>1536858471661</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="idk">
+      <created>1536859582387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1536859582387</updated>
+    </task>
+    <task id="LOCAL-00005" summary="idk">
+      <created>1536859707241</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1536859707241</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25812000" />
+    <option name="totallyTimeSpent" value="26318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" id="Project" order="0" visible="true" weight="0.21748401" />
       <window_info id="Structure" order="1" weight="0.24982794" />
@@ -604,7 +621,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="fix bucket issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bucket issue" />
+    <MESSAGE value="idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="idk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -805,13 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/components/events/EventsPage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3094">
@@ -913,9 +924,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/WorksApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="63" column="9" lean-forward="true" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WorksController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="357">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
@@ -923,17 +948,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/WorksApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="73" column="64" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
+        <state relative-caret-position="289">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>

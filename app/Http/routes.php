@@ -34,7 +34,7 @@ foreach($categories as $category)
 
 Route::get('/works', 'WorksController@index');
 Route::get('/works/{id}', ['as' => 'works.show-id', 'uses' => 'WorksController@showById']);
-Route::get('/works/{workAlias}', ['as' => 'works.show', 'uses' => 'WorksController@show']);
+Route::get('/works/title/{workAlias}', ['as' => 'works.show', 'uses' => 'WorksController@show']);
 
 Route::get('/events', [
     'as' => 'events.index',
