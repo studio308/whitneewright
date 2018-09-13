@@ -9,7 +9,7 @@
             -webkit-column-gap:   0;
             -moz-column-count:    5;
             -moz-column-gap:      2px;
-            column-count:         5;
+            column-count:         4;
             column-gap:           0;
         }
         #images img {
