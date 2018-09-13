@@ -71,7 +71,7 @@ class WorksApiController extends AbstractApiController
         if($s3->put($imagePath, file_get_contents($request->file('file')), 'public')) {
             $image = [
                 'name' => $request->file('file')->getClientOriginalName(),
-                'path' => env('AWS_URL').$imagePath
+                'path' => config('filesystems.disks.s3.url').$imagePath
             ];
 
             return response($image);

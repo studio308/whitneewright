@@ -101,7 +101,7 @@ textarea { resize:vertical; }
                 price: 0,
                 dimensions: '',
                 description: '',
-                showPrimary: false
+                showPrimary: false,
             }
         },
         watch: {
@@ -134,14 +134,16 @@ textarea { resize:vertical; }
         },
         methods: {
             save: function() {
-                 this.$http.post(this.saveEndpoint, this.workData, {headers: {
-                         Authorization: 'Bearer ' + this.apiToken
-                     }}).then(function(response){
-                    this.$bus.$emit('saved');
-                     location.reload();
-                 }, response =>{
+                if(this.primaryPhoto && this.selected) {
+                    this.$http.post(this.saveEndpoint, this.workData, {headers: {
+                            Authorization: 'Bearer ' + this.apiToken
+                        }}).then(function(response){
+                        this.$bus.$emit('saved');
+                        location.reload();
+                    }, response =>{
 
-                 });
+                    });
+                }
             },
             deleteImage: function(index) {
                 this.images.splice(index, 1);

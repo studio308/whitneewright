@@ -11742,12 +11742,14 @@ exports.default = {
     },
     methods: {
         save: function save() {
-            this.$http.post(this.saveEndpoint, this.workData, { headers: {
-                    Authorization: 'Bearer ' + this.apiToken
-                } }).then(function (response) {
-                this.$bus.$emit('saved');
-                location.reload();
-            }, function (response) {});
+            if (this.primaryPhoto && this.selected) {
+                this.$http.post(this.saveEndpoint, this.workData, { headers: {
+                        Authorization: 'Bearer ' + this.apiToken
+                    } }).then(function (response) {
+                    this.$bus.$emit('saved');
+                    location.reload();
+                }, function (response) {});
+            }
         },
         deleteImage: function deleteImage(index) {
             this.images.splice(index, 1);

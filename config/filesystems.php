@@ -60,6 +60,7 @@ return [
             'secret' => env('AWS_SECRET_KEY'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL')
         ],
 
     ],
