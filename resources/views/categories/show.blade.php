@@ -6,11 +6,11 @@
             line-height: 1;
 
             -webkit-column-count: 5;
-            -webkit-column-gap:   2px;
+            -webkit-column-gap:   0;
             -moz-column-count:    5;
             -moz-column-gap:      2px;
             column-count:         5;
-            column-gap:           2px;
+            column-gap:           0;
         }
         #images img {
             /* Just in case there are inline attributes */
