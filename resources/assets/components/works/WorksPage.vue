@@ -126,9 +126,9 @@
                 </div>
                 <div class="col-sm-5 col-md-2 spacer5">
                     {{ work.title }}
-                    <div class="row">
-                        {{ work.price }}
-                    </div>
+                    <!--<div class="row">-->
+                        <!--{{ work.price }}-->
+                    <!--</div>-->
                     <div class="row">
                         {{ work.measurements }}
                     </div>
