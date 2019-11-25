@@ -227,7 +227,7 @@ height: 2em;
             },
             apiToken: {
                 type: String,
-                required: true
+                required: false
             }
         },
         data(){
