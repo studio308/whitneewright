@@ -125,7 +125,9 @@
                     <p>{{  }}</p>
                 </div>
                 <div class="col-sm-5 col-md-2 spacer5">
-                    {{ work.title }}
+                    <div id="name">
+                        {{ work.title }}
+                    </div>
                     <!--<div class="row">-->
                         <!--{{ work.price }}-->
                     <!--</div>-->
