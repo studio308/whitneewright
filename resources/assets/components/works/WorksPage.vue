@@ -128,9 +128,6 @@
                     <div id="name">
                         {{ work.title }}
                     </div>
-                    <!--<div class="row">-->
-                        <!--{{ work.price }}-->
-                    <!--</div>-->
                     <div class="row">
                         {{ work.measurements }}
                     </div>
