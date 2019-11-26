@@ -1,5 +1,8 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp            = require('gulp');
+var babel           = require('gulp-babel');
+var browserSync     = require('browser-sync');
+var rename          = require('gulp-rename');
+var vueComponent    = require('gulp-vue-single-file-component');
 //require('laravel-elixir-vueify');
 
 // elixir.config.production = true;,
@@ -42,19 +45,41 @@ gulp.task('sass', function(){
         .pipe(gulp.dest('public/assets/css'))
 });
 
-gulp.task('default', function(){
-    gulp.src('resources/assets/components/categories.js')
-        .pipe(gulp.dest('public/assets/js'))
-
-    gulp.src('resources/assets/components/works/create/works.js')
-        .pipe(gulp.dest('public/assets/js'))
-
-    gulp.src('resources/assets/components/events/addevent.js')
-        .pipe(gulp.dest('public/assets/js'))
-
+gulp.task('scripts', function() {
     gulp.src('resources/assets/components/works/workspage.js')
+        .pipe(babel({plugins: ['@babel/plugin-transform-modules-amd']}))
         .pipe(gulp.dest('public/assets/js'))
-
-    gulp.src('resources/assets/components/events/eventspage.js')
-        .pipe(gulp.dest('public/assets/js'))
+        .pipe(browserSync.stream())
 });
+
+gulp.task('vue', function() {
+    gulp.src('resources/assets/components/works/WorksPage.vue')
+        .pipe(vueComponent({debug: true, loadCssMethod: 'loadCss'}))
+        .pipe(babel({plugins: ['@babel/plugin-transform-modules-amd']}))
+        .pipe(rename({extname: '.js'}))
+        .pipe(gulp.dest('public/assets/js'))
+        .pipe(browserSync.stream())
+});
+
+
+// gulp.task('default', function(){
+//     // gulp.src('resources/assets/components/categories.js')
+//     //     .pipe(browserify())
+//     //     .pipe(gulp.dest('public/assets/js'))
+//     //
+//     // gulp.src('resources/assets/components/works/create/works.js')
+//     //     .pipe(browserify())
+//     //     .pipe(gulp.dest('public/assets/js'))
+//     //
+//     // gulp.src('resources/assets/components/events/addevent.js')
+//     //     .pipe(browserify())
+//     //     .pipe(gulp.dest('public/assets/js'))
+//
+//     gulp.src('resources/assets/components/works/WorksPage.vue')
+//         .pipe(vueComponent({ /* options */ }))
+//         .pipe(gulp.dest('public/assets/js'))
+//
+//     // gulp.src('resources/assets/components/events/eventspage.js')
+//     //     .pipe(browserify())
+//     //     .pipe(gulp.dest('public/assets/js'))
+// });
