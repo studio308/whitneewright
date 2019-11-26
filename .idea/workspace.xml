@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42463162-8ba9-41fd-bb82-c04565e0fc55" name="Default" comment="0 gap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="whitneewright.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,8 +47,8 @@
           <entry key="ico" value="2" />
           <entry key="ini" value="1" />
           <entry key="jpg" value="4" />
-          <entry key="js" value="17" />
-          <entry key="json" value="4" />
+          <entry key="js" value="22" />
+          <entry key="json" value="5" />
           <entry key="lock" value="1" />
           <entry key="map" value="1" />
           <entry key="php" value="64" />
@@ -65,8 +63,8 @@
           <entry key="CSS" value="3" />
           <entry key="Image" value="6" />
           <entry key="Ini" value="1" />
-          <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="17" />
+          <entry key="JSON" value="6" />
+          <entry key="JavaScript" value="22" />
           <entry key="PHP" value="36" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="SCSS" value="1" />
@@ -79,7 +77,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Vue" value="94" />
-          <entry key="js" value="446" />
+          <entry key="js" value="513" />
           <entry key="json" value="2" />
           <entry key="php" value="1197" />
           <entry key="scss" value="1" />
@@ -92,7 +90,7 @@
         <counts>
           <entry key="Blade" value="753" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="446" />
+          <entry key="JavaScript" value="513" />
           <entry key="PHP" value="444" />
           <entry key="PLAIN_TEXT" value="88" />
           <entry key="SCSS" value="1" />
@@ -133,20 +131,38 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+            <state relative-caret-position="680">
+              <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package-lock.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3242">
+              <caret line="1490" column="43" selection-start-line="1490" selection-start-column="43" selection-end-line="1490" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="51">
+              <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/workspage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2210">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
             </state>
           </provider>
         </entry>
@@ -192,8 +208,10 @@
       <find>whitnee</find>
       <find>whitn</find>
       <find>price</find>
-      <find>gulp</find>
       <find>apiToken</find>
+      <find>gulp</find>
+      <find>node-sass</find>
+      <find>3.13.1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -511,7 +529,7 @@
       <workItem from="1536854871807" duration="10652000" />
       <workItem from="1572934173843" duration="2220000" />
       <workItem from="1574654721981" duration="1700000" />
-      <workItem from="1574667702562" duration="15854000" />
+      <workItem from="1574667702562" duration="17838000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1536729395377</created>
@@ -625,11 +643,18 @@
       <option name="project" value="LOCAL" />
       <updated>1574733808697</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="0 gap">
+      <created>1574735166744</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1574735166744</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53284000" />
+    <option name="totallyTimeSpent" value="55268000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -703,13 +728,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/WorksApiController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -889,11 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/npm-debug.log.1841296916">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-165064" />
@@ -908,9 +921,6 @@
     <entry file="file://$PROJECT_DIR$/public/assets/js/workspage.js.map">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="sourcemapFileViewerProvider" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/works/works.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/components/events/AddEvent.vue">
       <provider selected="true" editor-type-id="text-editor" />
@@ -945,13 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/works.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -961,13 +964,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/categories.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/workspage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/WorksPage.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -981,10 +977,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/eventspage.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/workspage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/works/works.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="51">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3242">
+          <caret line="1490" column="43" selection-start-line="1490" selection-start-column="43" selection-end-line="1490" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
         </state>
       </provider>
     </entry>
