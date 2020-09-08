@@ -9,7 +9,11 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                Coming soon.
+                <p>
+                    Utah based mixed media artist.
+                </p>
+                <img src="{{URL::asset('image/about.jpg')}}">
+            </div>
             </div>
         </div>
     </div>
