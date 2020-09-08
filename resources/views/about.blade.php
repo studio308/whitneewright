@@ -12,7 +12,7 @@
                 <p>
                     Utah based mixed media artist.
                 </p>
-                <img src="{{URL::asset('image/about.jpg')}}">
+                <img src="{{URL::asset('image/about.jpg')}}" class="img-responsive" style="margin: auto;">
             </div>
             </div>
         </div>
